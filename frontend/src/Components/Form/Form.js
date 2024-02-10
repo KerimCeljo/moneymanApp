@@ -26,12 +26,19 @@ function Form(){
 
         //get sta god je u inputu
         setInputState({...inputState, [name]: e.target.value})
+        
     }
 
     const handleSubmit = e => {
         e.preventDefault()
         addIncome(inputState)
-        getIncomes()
+        setInputState({
+            title: '',
+            amount: '',
+            date: '',
+            category: '',
+            description: '',
+        })
     }
     return(
         <FormStyled onSubmit={handleSubmit}>
