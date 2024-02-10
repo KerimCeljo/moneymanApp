@@ -6,7 +6,7 @@ function Expenses(){
     return(
         <ExpensesStyled>
             <InnerLayout>
-                
+                expenses
             </InnerLayout>
         </ExpensesStyled>
     )

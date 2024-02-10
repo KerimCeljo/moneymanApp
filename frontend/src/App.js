@@ -41,7 +41,7 @@ function App() {
             <MainLayout>
                 <Navigation active={active} setActive={setActive} />
                 <main>
-
+                    {displayData()}
                 </main>
             </MainLayout>
         </AppStyled>
