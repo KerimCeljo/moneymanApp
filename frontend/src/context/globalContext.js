@@ -11,7 +11,7 @@ export const GlobalProvider = ({children}) => {
     const [expenses, setExpenses] = useState([])
     const [error, setError] = useState(null)
 
-    //this is used for sending data to DB
+    
     const addIncome = async (income) =>{
         const response = await axios.post(`${BASE_URL}add-income`, income)
             .catch((err) =>{
@@ -19,9 +19,22 @@ export const GlobalProvider = ({children}) => {
             })
 
     } 
+    const getIncomes = async () =>{
+        const response = await axios.get(`${BASE_URL}get-income`)
+        setIncomes(response.data)
+        console.log(response.data)
+    }
+
+    const deleteIncome = async (id) =>{
+        const res = await axios.delete(`${BASE_URL}delete-income/${id}`)
+    }
+
     return(
         <GlobalContext.Provider value={{
-            addIncome
+            addIncome,
+            getIncomes,
+            incomes,
+            deleteIncome
         }}>
             {children}
         </GlobalContext.Provider>

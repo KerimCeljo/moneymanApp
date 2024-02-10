@@ -9,7 +9,7 @@ import { plus } from '../../utils/Icons';
 
 function Form(){
 
-    const {addIncome} = useGlobalContext()
+    const {addIncome, getIncomes} = useGlobalContext()
     const [inputState, setInputState] = useState({
 
         //by default everything is emptpy
@@ -31,6 +31,7 @@ function Form(){
     const handleSubmit = e => {
         e.preventDefault()
         addIncome(inputState)
+        getIncomes()
     }
     return(
         <FormStyled onSubmit={handleSubmit}>

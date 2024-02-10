@@ -25,11 +25,11 @@ exports.addIncome = async (req, res) => {
     } catch (error) {
         res.status(500).json({message: 'Server Error Brate'})
         
+        
     }
-
+    
     console.log(income)
 }
-
 exports.getIncomes = async (req, res) => {
     try {
         const incomes = await IncomeSchema.find().sort({createdAt: -1})
