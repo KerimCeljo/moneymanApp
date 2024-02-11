@@ -9,7 +9,7 @@ import { plus } from '../../utils/Icons';
 
 function Form(){
 
-    const {addIncome, getIncomes} = useGlobalContext()
+    const {addIncome, getIncomes, error, setError} = useGlobalContext()
     const [inputState, setInputState] = useState({
 
         //by default everything is emptpy
@@ -26,6 +26,7 @@ function Form(){
 
         //get sta god je u inputu
         setInputState({...inputState, [name]: e.target.value})
+        setError('')
         
     }
 
@@ -42,6 +43,9 @@ function Form(){
     }
     return(
         <FormStyled onSubmit={handleSubmit}>
+            {error && <p className='error'>
+                {error}
+                </p>}
             <div className="input-control">
                 <input 
                     type="text"
