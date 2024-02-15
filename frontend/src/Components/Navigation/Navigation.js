@@ -1,13 +1,24 @@
 import React, { useState } from 'react' 
 import styled from 'styled-components'
 import avatar from '../../img/avatar.png'
+import { useNavigate } from 'react-router-dom'
 import { signout } from '../../utils/Icons'
 import { menuItems } from '../../utils/menuItems'
 
 
 
 function Navigation({active, setActive}) {
+    const navigate = useNavigate();;
+
+    // Function to handle sign out
+    const handleSignOut = () => {
+        // Perform sign-out logic here, e.g., clear authentication token
+        localStorage.removeItem('jwtToken');
     
+        // Redirect user to the sign-in page
+        navigate('/login');
+    };
+
     return (
         <NavStyled>
             <div className="user-con">
@@ -30,7 +41,7 @@ function Navigation({active, setActive}) {
                 })}
             </ul>
             <div className="bottom-nav">
-                <li>
+                <li onClick={handleSignOut}>
                     {signout} Sign Out
                 </li>
             </div>
